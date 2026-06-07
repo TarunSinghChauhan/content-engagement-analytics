@@ -230,9 +230,9 @@ SELECT COUNT(*) FROM content_catalogue;  -- Expected: 500
 
 ## Author
 
-**[Your Name]**  
+**[Tarun]**  
 Data Analyst | Python · SQL · Power BI · Tableau  
-[LinkedIn](#) · [GitHub](#) · [Portfolio](#)
+[LinkedIn](https://www.linkedin.com/in/tarunchauhanml) · [Portfolio](https://tarunsinghchauhan.github.io/portfolio-website/)
 
 ---
 
