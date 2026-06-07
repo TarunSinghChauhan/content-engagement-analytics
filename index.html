@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Content Engagement Analytics</title>
+    <!-- Stlite CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.63.1/build/stlite.css" />
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #0d0d1a;
+      }
+      #root {
+        height: 100%;
+      }
+      /* Custom loading screen while the 43MB CSV and WebAssembly loads */
+      .loading-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #e8f0fe;
+        font-family: 'Inter', sans-serif;
+      }
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border-left-color: #e50914;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Fallback loading indicator before stlite initializes -->
+      <div class="loading-screen">
+        <div class="spinner"></div>
+        <h2>Loading Platform...</h2>
+        <p style="color: #7a9cc4; font-size: 0.9rem;">Initializing WebAssembly Python & Downloading 500K Play Events (~43MB).</p>
+        <p style="color: #7a9cc4; font-size: 0.8rem;">This might take 10-15 seconds on the first load.</p>
+      </div>
+    </div>
+
+    <!-- Stlite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.63.1/build/stlite.js"></script>
+    <script>
+      stlite.mount(
+        {
+          requirements: ["pandas", "plotly", "numpy"],
+          entrypoint: "app.py",
+          files: {
+            "app.py": { url: "app.py" },
+            "data/play_events.csv": { url: "data/play_events.csv" },
+            "data/content_catalogue.csv": { url: "data/content_catalogue.csv" }
+          },
+        },
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

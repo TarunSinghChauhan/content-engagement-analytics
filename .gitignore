@@ -1,0 +1,35 @@
+# We are explicitly allowing the CSV files to be pushed 
+# because GitHub Pages needs to serve them for our WebAssembly Streamlit app!
+# The 43MB file is under the 50MB warning threshold and 100MB strict limit.
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Power BI (binary -- share via link, not git)
+*.pbix
+
+# Tableau (binary -- share via Tableau Public, not git)
+*.twb
+*.twbx
+*.tde
+*.hyper
+
+# Excel (binary -- share separately)
+*.xlsx
+*.xls
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
